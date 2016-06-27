@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160627100922) do
+ActiveRecord::Schema.define(version: 20160627115117) do
 
   create_table "routes", force: :cascade do |t|
     t.string   "name"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20160627100922) do
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
     t.integer  "current_station_id"
+    t.integer  "route_id"
   end
 
 end
