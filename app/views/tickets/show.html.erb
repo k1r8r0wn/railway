@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>ID:</strong>
+  <%= @ticket.id %>
+</p>
+
+<p>
+  <strong>Passenger name</strong>
+  <%= @ticket.passenger_name %>
+</p>
+
+<p>
+  <% if @ticket.departure_station.blank? || @ticket.destination_station.blank?%>
+    No route in this ticket
+  <%else %>
+    <strong>Departure station:</strong>
+    <%= @ticket.departure_station.title %><br>
+    <strong>Destination station:</strong>
+    <%= @ticket.destination_station.title %>
+  <%end%>
+</p>
+
+<%= link_to 'Edit', edit_ticket_path(@ticket) %> |
+<%= link_to 'Back', tickets_path %>

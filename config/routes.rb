@@ -3,5 +3,5 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
 
-  resources :stations, :trains, :routes, :carriages
+  resources :stations, :trains, :routes, :carriages, :tickets
 end
