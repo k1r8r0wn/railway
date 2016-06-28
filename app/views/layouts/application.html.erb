@@ -4,11 +4,17 @@
     <title>Railway</title>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
+    <%= csrf_meta_tags %>
+  </head>
+
   <body>
 
     <%= yield %>
 
   </body>
+
+  <footer>
+    <%= link_to 'Back to main page', root_path %>
+  </footer>
+
 </html>
