@@ -5,5 +5,18 @@
   <%= @station.title %>
 </p>
 
+<% if @station.routes.empty? %>
+  <p>This station is not a part of any route.</p>
+<% else %>
+  <p>This station is a part of this route(-s):</p>
+  <ul>
+    <% @station.routes.each do |route| %>
+      <li>
+        <%= route.name %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
 <%= link_to 'Edit', edit_station_path(@station) %> |
 <%= link_to 'Back', stations_path %>

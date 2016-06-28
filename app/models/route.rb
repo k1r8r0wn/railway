@@ -3,5 +3,5 @@ class Route < ActiveRecord::Base
   has_many :stations, through: :routes_stations
   has_many :trains
 
-  validates :title, presence: true
+  validates :name, presence: true
 end

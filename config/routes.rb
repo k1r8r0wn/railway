@@ -5,4 +5,5 @@ Rails.application.routes.draw do
 
   resources :stations
   resources :trains
+  resources :routes
 end
