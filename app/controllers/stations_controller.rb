@@ -33,7 +33,7 @@ class StationsController < ApplicationController
 
   def destroy
     @station.destroy
-    redirect_to stations_url, notice: 'Station was successfully destroyed.'
+    redirect_to stations_path, notice: 'Station was successfully destroyed.'
   end
 
   private
