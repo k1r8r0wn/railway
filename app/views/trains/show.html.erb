@@ -23,5 +23,33 @@
   <%end%>
 </p>
 
+<p>
+  <strong>Carriages:</strong>
+  <% if @train.carriages.present?%>
+    Coupe:
+    <%= "#{@train.train_details['coupe'] ? @train.train_details['coupe'] : '0'}" %>
+    Sleeping:
+    <%= "#{@train.train_details['sleeping'] ? @train.train_details['sleeping'] : '0'}" %>
+  <%else %>
+    None
+  <%end%>
+</p>
+
+<p>
+  <strong>Total berths number in sleeping carriage(-s):</strong>
+  Upper:
+  <%= @train.sleeping_berths[:upper_berths] %>
+  Lower:
+  <%= @train.sleeping_berths[:lower_berths] %>
+</p>
+
+<p>
+  <strong>Total berths number in coupe carriage(-s):</strong>
+  Upper:
+  <%= @train.coupe_berths[:upper_berths] %>
+  Lower:
+  <%= @train.coupe_berths[:lower_berths] %>
+</p>
+
 <%= link_to 'Edit', edit_train_path(@train) %> |
 <%= link_to 'Back', trains_path %>
