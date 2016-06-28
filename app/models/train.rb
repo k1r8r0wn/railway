@@ -3,6 +3,7 @@ class Train < ActiveRecord::Base
                                foreign_key: :current_station_id
   belongs_to :route
   has_many   :tickets
+  has_many   :carriages
 
   validates :number, presence: true
 end
