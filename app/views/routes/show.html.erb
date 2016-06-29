@@ -10,15 +10,32 @@
 </p>
 
 <p>
-  <% if @route.stations.present?%>
-    <ul>
-      <% @route.stations.each do |station| %>
-        <li><%= station.title %></li>
-      <%end%>
-    </ul>
-  <%else %>
+  <% if @route.stations.present? %>
+    <table>
+      <thead>
+        <tr>
+          <th width="200px">Title</th>
+          <th>Position</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @route.stations.ordered.each do |station| %>
+          <tr>
+            <td><%= station.title %></td>
+            <td>
+              <%= form_tag update_position_station_path(station), method: :patch do %>
+                <%= number_field_tag :position, station.position_in(@route) %>
+                <%= hidden_field_tag :route_id, @route.id %>
+                <%= submit_tag 'Change' %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
     Empty
-<%end%>
+  <% end %>
 </p>
 
 <p>
@@ -26,15 +43,15 @@
 </p>
 
 <p>
-  <% if @route.trains.present?%>
+  <% if @route.trains.present? %>
     <ul>
       <% @route.trains.each do |train| %>
         <li><%= train.number %></li>
       <%end%>
     </ul>
-  <%else %>
+  <% else %>
     Empty
-<%end%>
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_route_path(@route) %> |

@@ -3,5 +3,8 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
 
-  resources :stations, :trains, :routes, :carriages, :tickets
+  resources :trains, :routes, :carriages, :tickets
+  resources :stations do
+    patch :update_position, on: :member
+  end
 end
