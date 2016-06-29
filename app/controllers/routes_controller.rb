@@ -1,5 +1,5 @@
 class RoutesController < ApplicationController
-  before_action :find
+  before_action :find_route, only: [:show, :edit, :update, :destroy]
 
   def index
     @routes = Route.all

@@ -7,13 +7,21 @@
   </div>
 
   <div class="field">
-    <%= f.label :current_station, 'Current station:' %><br>
+    <%= f.label :current_station, 'Current train station:' %><br>
     <%= f.collection_select :current_station_id, Station.all, :id, :title %>
   </div>
 
   <div class="field">
     <%= f.label :route, 'Route:' %><br>
     <%= f.collection_select :route_id, Route.all, :id, :name %>
+  </div>
+
+  <div class="field">
+    <p> Carriages numeration: </p>
+    <%= f.radio_button :numeration, "true", :checked => true %>
+    <%= f.label :numeration, 'Numeration from beginning of the train', value: "true" %><br>
+    <%= f.radio_button :numeration, "false" %>
+    <%= f.label :numeration, "Numeration from the end of the train", value: "false"%><br>
   </div>
 
   <div class="actions">

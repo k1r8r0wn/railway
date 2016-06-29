@@ -1,11 +1,8 @@
 class Carriage < ActiveRecord::Base
   DESCENDANTS = [EconomyCarriage, CoupeCarriage, SleepingCarriage, SittingCarriage].map(&:name).freeze
   
-  # default_scope { order(:number) }
-
-  scope :economy_carriage, -> { where(carriage_type: 'economy') }
-  scope :coupe_carriage, -> { where(carriage_type: 'coupe') }
-  scope :ordered, -> { order(:number) }
+  scope :start_numeration, -> { order(:number) }
+  scope :end_numeration, -> { start_numeration.reverse_order }
 
   belongs_to :train
 
