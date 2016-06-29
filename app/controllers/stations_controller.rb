@@ -1,5 +1,5 @@
 class StationsController < ApplicationController
-  before_action :set_station, only: [:show, :edit, :update, :destroy, :update_position]
+  before_action :find_station, only: [:show, :edit, :update, :destroy, :update_position]
 
   def index
     @stations = Station.all
@@ -44,7 +44,7 @@ class StationsController < ApplicationController
 
   private
 
-  def set_station
+  def find_station
     @station = Station.find(params[:id])
   end
 
