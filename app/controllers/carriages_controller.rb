@@ -1,5 +1,5 @@
 class CarriagesController < ApplicationController
-  before_action :set_carriage, only: [:show, :edit, :update, :destroy]
+  before_action :find_carriage, only: [:show, :edit, :update, :destroy]
 
   def index
     @carriages = Carriage.all
@@ -14,7 +14,7 @@ class CarriagesController < ApplicationController
   def edit; end
 
   def create
-    @carriage = Carriage.new(carriage_params)
+    @carriage = carriage_class.new(carriage_params)
     if @carriage.save
       redirect_to @carriage, notice: 'Carriage was successfully created.'
     else
@@ -37,11 +37,18 @@ class CarriagesController < ApplicationController
 
   private
 
-  def set_carriage
+  def find_carriage
     @carriage = Carriage.find(params[:id])
   end
 
   def carriage_params
-    params.require(:carriage).permit(:carriage_type, :train_id, :upper_berths, :lower_berths)
+    params.require(:carriage).permit(:carriage_type, :train_id, :upper_berths, 
+                                     :lower_berths, :side_upper_berths, 
+                                     :side_lower_berths, :sitting_berths)
+  end
+
+  def carriage_class
+    params = carriage_params[:carriage_type]
+    @carriage_class ||= Carriage::DESCENDANTS.include?(params) ? params.constantize : Carriage
   end
 end

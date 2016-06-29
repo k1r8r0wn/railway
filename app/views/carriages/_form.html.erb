@@ -2,30 +2,38 @@
   <%= render 'common/errors', resource: @carriage %>
 
   <div class="field">
-    <%= f.label :carriage_type, 'Carriage type:' %>
+    <%= f.label :train_id, 'Train number:' %><br>
+    <%= f.collection_select :train_id, Train.all, :id, :number %>
   </div>
 
   <div class="field">
-    <%= f.label :carriage_type, 'Сoupe', value: 'coupe' %>
-    <%= f.radio_button :carriage_type, 'coupe' %>
-
-    <%= f.label :carriage_type, 'Sleeping', value: 'sleeping' %>
-    <%= f.radio_button :carriage_type, 'sleeping', checked: true %><br>
+    <%= f.label :carriage_type, "Carriage type:" %><br>
+    <%= f.select(:carriage_type, Carriage::DESCENDANTS)%><br>
   </div>
 
   <div class="field">
     <%= f.label :upper_berths, 'Number of upper berths:' %><br>
-    <%= f.number_field :upper_berths, step: 'any'%><br>
+    <%= f.number_field :upper_berths %><br>
   </div>
 
   <div class="field">
     <%= f.label :lower_berths, 'Number of lower berths:' %><br>
-    <%= f.number_field :lower_berths, step: 'any'%><br>
+    <%= f.number_field :lower_berths %><br>
   </div>
 
   <div class="field">
-    <%= f.label :train_id, 'Train number:' %><br>
-    <%= f.collection_select :train_id, Train.all, :id, :number %>
+    <%= f.label :side_upper_berths, 'Number of side upper berths:' %><br>
+    <%= f.number_field :side_upper_berths %><br>
+  </div>
+
+  <div class="field">
+    <%= f.label :side_lower_berths, 'Number of side lower berths:' %><br>
+    <%= f.number_field :side_lower_berths %><br>
+  </div>
+
+  <div class="field">
+    <%= f.label :sitting_berths, 'Number of sitting berths:' %><br>
+    <%= f.number_field :sitting_berths %><br>
   </div>
 
   <div class="actions">

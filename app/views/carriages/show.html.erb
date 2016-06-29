@@ -20,5 +20,20 @@
   <%= @carriage.lower_berths %>
 </p>
 
+<p>
+  <strong>Number of side upper berths:</strong>
+  <%= @carriage.side_upper_berths %>
+</p>
+
+<p>
+  <strong>Number of side lower berths:</strong>
+  <%= @carriage.side_lower_berths %>
+</p>
+
+<p>
+  <strong>Number of sitting berths:</strong>
+  <%= @carriage.sitting_berths %>
+</p>
+
 <%= link_to 'Edit', edit_carriage_path(@carriage) %> |
 <%= link_to 'Back', carriages_path %>
