@@ -2,17 +2,17 @@
   <%= render 'common/errors', resource: @ticket %>
 
   <div class="field">
-    <%= f.label :passenger_name %><br>
+    <%= f.label :passenger_name, 'Passenger name:' %><br>
     <%= f.text_field :passenger_name %><br>
   </div>
 
   <div class="field">
-    <%= f.label :departure_station_id, 'Departure station' %>
+    <%= f.label :departure_station_id, 'Departure station:' %><br>
     <%= f.collection_select :departure_station_id, Station.all, :id, :title %>
   </div>
 
   <div class="field">
-    <%= f.label :destination_station_id, 'Destination station' %>
+    <%= f.label :destination_station_id, 'Destination station:' %><br>
     <%= f.collection_select :destination_station_id, Station.all, :id, :title %>
   </div>
 
