@@ -1,6 +1,6 @@
 class Route < ActiveRecord::Base
-  has_many :routes_stations
-  has_many :stations, through: :routes_stations
+  has_many :waypoints, dependent: :destroy
+  has_many :stations, through: :waypoints
   has_many :trains
 
   validates :name, presence: true
@@ -11,7 +11,11 @@ class Route < ActiveRecord::Base
   private
 
   def set_name
-    self.name ||= "#{stations.first.title}-#{stations.last.title}"
+    if stations.present?
+      self.name ||= "#{stations.first.title}-#{stations.last.title}"
+    else
+      errors.add(:base, 'Route should not be empty.')
+    end
   end
 
   def stations_count

@@ -10,25 +10,31 @@
 </p>
 
 <p>
-  <% if @route.stations.present? %>
+  <% if @route.waypoints.present? %>
     <table>
       <thead>
         <tr>
-          <th width="200px">Title</th>
+          <th>Title</th>
           <th>Position</th>
+          <th>Departure datetime</th>
+          <th>Arrival datetime</th>
         </tr>
       </thead>
       <tbody>
-        <% @route.stations.ordered.each do |station| %>
+        <% @route.waypoints.ordered.each do |waypoint| %>
           <tr>
-            <td><%= station.title %></td>
-            <td>
-              <%= form_tag update_position_station_path(station), method: :patch do %>
-                <%= number_field_tag :position, station.position_in(@route) %>
-                <%= hidden_field_tag :route_id, @route.id %>
-                <%= submit_tag 'Change' %>
+            <td><%= waypoint.station.title %></td>
+            <%= form_for waypoint, url: route_waypoint_path(@route, waypoint), method: :patch do |f| %>
+              <td>
+                <%= f.text_field :position %>
+              <td>
+                <%= f.datetime_select :departure_time %>
+              </td>
+              <td>
+                <%= f.datetime_select :arrival_time %>
+                <%= f.submit 'Change' %>
+              </td>
               <% end %>
-            </td>
           </tr>
         <% end %>
       </tbody>

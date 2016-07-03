@@ -1,4 +1,6 @@
-class RoutesStation < ActiveRecord::Base
+class Waypoint < ActiveRecord::Base
+  scope :ordered, -> { order('waypoints.position') }
+
   belongs_to :station
   belongs_to :route
 

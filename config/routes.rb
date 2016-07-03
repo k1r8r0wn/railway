@@ -3,8 +3,13 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
 
-  resources :trains, :routes, :carriages, :tickets
-  resources :stations do
-    patch :update_position, on: :member
+  resources :tickets, :stations
+
+  resources :routes do
+    resources :waypoints, only: [:update]
+  end
+  
+  resources :trains do
+    resources :carriages, shallow: true
   end
 end
