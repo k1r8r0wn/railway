@@ -27,12 +27,16 @@
   <strong>Carriages:</strong>
   <% if @train.carriages.present?%>
    <% @train.carriages_numeration.each do |carriage| %>
-      <%= link_to carriage.number, carriage %>
+      <%= link_to "Carriage №#{carriage.number}", carriage %>
     <%end%>
     <%= "#{@train.numeration? ? "(Numeration from beginning of the train)" : "(Numeration from the end of the train)"}"%>
   <%else %>
       There is no carriages.
   <%end%>
+</p>
+
+<p>
+  <%= link_to "Add new carriage", new_train_carriage_path(@train) %>
 </p>
 
 <%= link_to 'Edit', edit_train_path(@train) %> |
